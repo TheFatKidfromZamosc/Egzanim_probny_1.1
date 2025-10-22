@@ -15,29 +15,28 @@
             /************************************************************
              *  Konstruktor klasy Cztery - inicjalizuje tablicę isCzworkowa
              *  Sprawdza dla każdej liczby od 1 do 10000, czy jest czworkowa
-             *  Wpierw sprawdza ostatnią cyfrę liczby, czy jest równa 4
+             *  Wpierw sprawdza czy cyfra zawiera cyfre 4
              *  Następnie oblicza sumę cyfr liczby i sprawdza czy ostatnia cyfra sumy jest równa 4
              *******************************************************/
             public Cztery()
             {
-                for (int i = 1; i <= isCzworkowa.Length; i++)
+                for (int i = 1; i < 10000; i++)
                 {
-                    int dlugosc = i.ToString().Length;
                     string lastOfNum = i.ToString();
-                    if (lastOfNum[dlugosc-1] == '4')
-                        isCzworkowa[i] = true; 
+                    if (lastOfNum.Contains('4'))
+                        isCzworkowa[i] = true;
                     else
                     {
                         int sum = 0;
-                        
-                        for (int j =0; j < i.ToString().Length; j++)
+
+                        for (int j = 0; j < i.ToString().Length; j++)
                         {
                             sum += i.ToString()[j] - '0';
-                       
+
                         }
-                        dlugosc = sum.ToString().Length;
+                        int dlugosc = sum.ToString().Length;
                         string lastOfSumOfNum = sum.ToString();
-                        if (lastOfSumOfNum[dlugosc-1] == '4')
+                        if (lastOfSumOfNum[dlugosc - 1] == '4')
                             isCzworkowa[i] = true;
                         else
                             isCzworkowa[i] = false;
@@ -45,10 +44,11 @@
                     }
                 }
             }
+        
         /************************************************************
          *  Metoda CzyCzworkowa(n) zwraca true, jeśli n jest liczbą czworkową.
          *  Liczba jest czworkowa, jeśli spełnia jeden z warunków:
-         *  - jej ostatnia cyfra to 4
+         *  - zawiera cyfre 4
          *  - suma jej cyfr ma ostatnią cyfrę równą 4
          *******************************************************/
         public bool CzyCzworkowa(int n)
@@ -62,7 +62,7 @@
         static void Main(string[] args)
         {
            Cztery cztery = new Cztery();
-              Console.WriteLine(cztery.CzyCzworkowa(67));
+              Console.WriteLine(cztery.CzyCzworkowa(21));
         }
     }
 }
