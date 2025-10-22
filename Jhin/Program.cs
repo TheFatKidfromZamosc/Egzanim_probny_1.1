@@ -2,13 +2,25 @@
 {
     internal class Program
     {
+        /**********************************
+         * Klasa Cztery
+         * opis: sprawdzanie czy liczba jest czworkowa
+         * pola: isCzworkowa - tablica przechowujaca informacje czy liczba jest czworkowa
+         * autor: Jhin
+         *********************************/
         public class Cztery
         {
             private bool[] isCzworkowa = new bool[10000];
-            
+
+            /************************************************************
+             *  Konstruktor klasy Cztery - inicjalizuje tablicę isCzworkowa
+             *  Sprawdza dla każdej liczby od 1 do 10000, czy jest czworkowa
+             *  Wpierw sprawdza ostatnią cyfrę liczby, czy jest równa 4
+             *  Następnie oblicza sumę cyfr liczby i sprawdza czy ostatnia cyfra sumy jest równa 4
+             *******************************************************/
             public Cztery()
             {
-                for (int i = 1; i < isCzworkowa.Length; i++)
+                for (int i = 1; i <= isCzworkowa.Length; i++)
                 {
                     int dlugosc = i.ToString().Length;
                     string lastOfNum = i.ToString();
@@ -33,7 +45,13 @@
                     }
                 }
             }
-            public bool CzyCzworkowa(int n)
+        /************************************************************
+         *  Metoda CzyCzworkowa(n) zwraca true, jeśli n jest liczbą czworkową.
+         *  Liczba jest czworkowa, jeśli spełnia jeden z warunków:
+         *  - jej ostatnia cyfra to 4
+         *  - suma jej cyfr ma ostatnią cyfrę równą 4
+         *******************************************************/
+        public bool CzyCzworkowa(int n)
             {
                 if(n >=10000 || n < 1)
                     throw new ArgumentOutOfRangeException("n musi byc z zakresu 1-10000");
